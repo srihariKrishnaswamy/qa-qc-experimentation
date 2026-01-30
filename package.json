@@ -1,0 +1,12 @@
+{
+  "name": "qa-qc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "amplify:sandbox": "ampx sandbox"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend-cli": "^1.8.2",
+    "@types/node": "^20.0.0"
+  }
+}

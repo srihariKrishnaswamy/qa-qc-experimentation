@@ -1,0 +1,5 @@
+pypdf
+langchain-google-genai
+boto3
+pydantic>=2.0,<3
+pydantic-core>=2.0,<3
