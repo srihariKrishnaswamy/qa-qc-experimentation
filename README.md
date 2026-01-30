@@ -56,7 +56,9 @@ The Lambda writes grouped rules as JSON:
 ## Demo
 
 [Demo video](https://drive.google.com/file/d/1v852Hjrv7AKwJZZvKraBFteZFNoDb-Qd/view?usp=sharing)
+
 [Specbook from the Demo](https://drive.google.com/drive/u/0/folders/1XijIGvKQj4JH0aS_OvErYa9SgH6UMrIg)
+
 [Results from the Demo](https://drive.google.com/file/d/1Ed_VUCYxQ--MvYcIUKQ9ynK3dmJ3SfY9/view?usp=sharing)
 
 Soon to come: analysis of generated rule exhaustiveness
