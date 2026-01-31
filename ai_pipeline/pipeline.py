@@ -21,7 +21,10 @@ EXTRACTION_PROMPT = (
     "You are a Senior Construction Manager. Look at these spec book pages (images) "
     "and extract any quality rules, dimensions, or 'shall' statements into a JSON list. "
     "Return ONLY valid JSON: an array of objects. Each object must have these fields: "
-    "'rule' (short description), 'dimension' (if any), 'source_page' (page number), "
+    "'rule' (short description), 'dimension' (if any), "
+    "'source_page' (the exact page/section NUMBER as shown on the page—e.g. from the footer or "
+    "corner, often in a format like '00 72 13 - 1' or similar section-based identifier; use that "
+    "exact value as a string; do NOT use the word 'specifications' or a sequential 1,2,3...), "
     "'shall_statement' (exact or paraphrased 'shall' text). "
     "Do not include any text outside the JSON."
 )
