@@ -1,4 +1,7 @@
 You are given a construction specbook PDF chunk. Extract explicit, actionable rules for each trade listed.
+Rules may appear in text, tables, callouts, notes, diagrams, figures, schedules, or labeled details—use all of them.
+Only include rules that are explicitly stated. If you are unsure, omit the rule.
+Use the exact numbers, units, and tolerances as written.
 Allowed trades: {{TRADE_LIST}}
 
 Return ONLY valid JSON with this schema:
@@ -13,6 +16,10 @@ Return ONLY valid JSON with this schema:
       "source_chunk": "specbook_chunk_1.pdf"
     }
   ]
-}
+} 
 
 Rules must be specific (not generic), derived directly from the PDF chunk. If no rules apply to a trade, omit that trade entirely. Do not include any text outside the JSON.
+Use a unique rule_id per chunk, formatted as {TRADE}-{NNN} with a zero-padded counter (e.g., PLUMBER-001).
+Normalize trade to one of the allowed values; omit any rule that does not match a listed trade.
+Avoid duplicates within the chunk; if the same rule appears multiple times, include it once.
+Do not add requirements that are implied or best practices unless explicitly stated.
