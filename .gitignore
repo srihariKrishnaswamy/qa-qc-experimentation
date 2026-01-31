@@ -26,3 +26,5 @@ specbook_chunks/
 specbook_rules_by_trade.json
 specbook_rules_by_trade.md
 tmp_lambda_out.json
+
+.env
