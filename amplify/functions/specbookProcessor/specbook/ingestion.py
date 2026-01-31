@@ -12,6 +12,14 @@ from pypdf import PdfReader, PdfWriter
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_CHUNK_SIZE = 5
+DEFAULT_OVERLAP = 1
+DEFAULT_MAX_RETRIES = 5
+DEFAULT_MAX_CONCURRENCY = 4
+PROMPT_TRADE_PLACEHOLDER = "{{TRADE_LIST}}"
+PROMPT_PATH = Path(__file__).resolve().parent / "prompts" / "rules_prompt.txt"
+_PROMPT_TEMPLATE: str | None = None
+
 
 @dataclass
 class Rule:
@@ -23,21 +31,32 @@ class Rule:
     source_chunk: str
 
 
-def chunk_pdf(
-    input_pdf: str | Path,
-    chunk_size: int = 5,
-    overlap: int = 1,
-    output_dir: str | Path | None = None,
-) -> list[Path]:
-    input_path = Path(input_pdf)
-    if not input_path.exists():
-        raise FileNotFoundError(f"PDF not found: {input_path}")
+def _validate_chunk_params(chunk_size: int, overlap: int) -> None:
     if chunk_size <= 0:
         raise ValueError("chunk_size must be positive")
     if overlap < 0:
         raise ValueError("overlap must be non-negative")
     if overlap >= chunk_size:
         raise ValueError("overlap must be smaller than chunk_size")
+
+
+def _load_prompt_template() -> str:
+    global _PROMPT_TEMPLATE
+    if _PROMPT_TEMPLATE is None:
+        _PROMPT_TEMPLATE = PROMPT_PATH.read_text(encoding="utf-8")
+    return _PROMPT_TEMPLATE
+
+
+def chunk_pdf(
+    input_pdf: str | Path,
+    chunk_size: int = DEFAULT_CHUNK_SIZE,
+    overlap: int = DEFAULT_OVERLAP,
+    output_dir: str | Path | None = None,
+) -> list[Path]:
+    input_path = Path(input_pdf)
+    if not input_path.exists() or not input_path.is_file():
+        raise FileNotFoundError(f"PDF not found: {input_path}")
+    _validate_chunk_params(chunk_size, overlap)
 
     if output_dir is None:
         output_path = input_path.parent / f"{input_path.stem}_chunks"
@@ -67,27 +86,8 @@ def chunk_pdf(
 
 def build_rules_prompt(trades: list[str]) -> str:
     trade_list = ", ".join(trades)
-    return (
-        "You are given a construction specbook PDF chunk. "
-        "Extract explicit, actionable rules for each trade listed.\n"
-        f"Allowed trades: {trade_list}\n\n"
-        "Return ONLY valid JSON with this schema:\n"
-        '{\n'
-        '  "rules": [\n'
-        "    {\n"
-        '      "trade": "plumber",\n'
-        '      "rule_id": "P-001",\n'
-        '      "description": "Short, precise requirement",\n'
-        '      "requirements": ["bullet-like requirement 1", "requirement 2"],\n'
-        '      "source_pages": [1, 2],\n'
-        '      "source_chunk": "specbook_chunk_1.pdf"\n'
-        "    }\n"
-        "  ]\n"
-        "}\n\n"
-        "Rules must be specific (not generic), derived directly from the PDF chunk. "
-        "If no rules apply to a trade, omit that trade entirely. "
-        "Do not include any text outside the JSON."
-    )
+    prompt_template = _load_prompt_template()
+    return prompt_template.replace(PROMPT_TRADE_PLACEHOLDER, trade_list)
 
 
 def _decode_rules_json(raw_text: str) -> dict:
@@ -133,9 +133,12 @@ def extract_rules_for_chunks_parallel(
     llm: ChatGoogleGenerativeAI,
     chunk_paths: list[Path],
     trades: list[str],
-    max_retries: int = 5,
-    max_concurrency: int = 4,
+    max_retries: int = DEFAULT_MAX_RETRIES,
+    max_concurrency: int = DEFAULT_MAX_CONCURRENCY,
 ) -> list[list[Rule]]:
+    if not chunk_paths:
+        return []
+
     messages = [_build_message(chunk_path, trades) for chunk_path in chunk_paths]
     results: list[list[Rule] | None] = [None] * len(chunk_paths)
     remaining = list(range(len(chunk_paths)))
@@ -197,10 +200,10 @@ def generate_rules_json(
     input_pdf: str | Path,
     llm: ChatGoogleGenerativeAI,
     trades: list[str],
-    chunk_size: int = 5,
-    overlap: int = 1,
-    max_retries: int = 5,
-    max_concurrency: int = 4,
+    chunk_size: int = DEFAULT_CHUNK_SIZE,
+    overlap: int = DEFAULT_OVERLAP,
+    max_retries: int = DEFAULT_MAX_RETRIES,
+    max_concurrency: int = DEFAULT_MAX_CONCURRENCY,
 ) -> dict[str, list[dict]]:
     chunk_paths = chunk_pdf(input_pdf, chunk_size=chunk_size, overlap=overlap)
     rules_per_chunk = extract_rules_for_chunks_parallel(
@@ -211,8 +214,5 @@ def generate_rules_json(
         max_concurrency=max_concurrency,
     )
 
-    all_rules: list[Rule] = []
-    for rules in rules_per_chunk:
-        all_rules.extend(rules)
-
+    all_rules = [rule for rules in rules_per_chunk for rule in rules]
     return group_rules_by_trade(all_rules)

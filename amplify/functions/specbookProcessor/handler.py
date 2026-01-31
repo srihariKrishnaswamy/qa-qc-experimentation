@@ -14,12 +14,45 @@ from specbook.ingestion import generate_rules_json
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+TRADES = [
+    "carpenter",
+    "drywall",
+    "electrician",
+    "hvac",
+    "insulator",
+    "painter",
+    "plumber",
+    "roofer",
+    "steel",
+    "tiler",
+]
+
 
 def _get_env(name: str, default: str = "") -> str:
     value = os.environ.get(name, default)
     if not value:
         raise ValueError(f"Missing required env var: {name}")
     return value
+
+
+def _get_bucket_name(record: dict[str, Any]) -> str:
+    bucket_name = (
+        record.get("s3", {})
+        .get("bucket", {})
+        .get("name", "")
+    )
+    return bucket_name or os.environ.get("UPLOAD_BUCKET_NAME", "")
+
+
+def _get_object_key(record: dict[str, Any]) -> str:
+    key = (
+        record.get("s3", {})
+        .get("object", {})
+        .get("key", "")
+    )
+    if not key:
+        return ""
+    return unquote_plus(key)
 
 
 def handler(event: dict[str, Any], context: Any) -> dict[str, Any]:
@@ -40,39 +73,19 @@ def handler(event: dict[str, Any], context: Any) -> dict[str, Any]:
     processed: list[str] = []
 
     for record in records:
-        bucket_name = (
-            record.get("s3", {})
-            .get("bucket", {})
-            .get("name", "")
-        ) or os.environ.get("UPLOAD_BUCKET_NAME", "")
+        bucket_name = _get_bucket_name(record)
         if not bucket_name:
             raise ValueError("Missing bucket name in S3 event or env var")
 
-        key = (
-            record.get("s3", {})
-            .get("object", {})
-            .get("key", "")
-        )
+        key = _get_object_key(record)
         if not key:
+            logger.warning("Skipping record without S3 object key")
             continue
-        key = unquote_plus(key)
 
         local_pdf = Path("/tmp") / Path(key).name
         s3.download_file(bucket_name, key, str(local_pdf))
 
-        trades = [
-            "carpenter",
-            "drywall",
-            "electrician",
-            "hvac",
-            "insulator",
-            "painter",
-            "plumber",
-            "roofer",
-            "steel",
-            "tiler",
-        ]
-        grouped = generate_rules_json(local_pdf, llm, trades)
+        grouped = generate_rules_json(local_pdf, llm, TRADES)
 
         output_name = f"{Path(key).stem}_rules.json"
         output_key = f"{output_prefix.rstrip('/')}/{output_name}"

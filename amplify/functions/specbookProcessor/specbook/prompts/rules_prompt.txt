@@ -1,0 +1,18 @@
+You are given a construction specbook PDF chunk. Extract explicit, actionable rules for each trade listed.
+Allowed trades: {{TRADE_LIST}}
+
+Return ONLY valid JSON with this schema:
+{
+  "rules": [
+    {
+      "trade": "plumber",
+      "rule_id": "P-001",
+      "description": "Short, precise requirement",
+      "requirements": ["bullet-like requirement 1", "requirement 2"],
+      "source_pages": [1, 2],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ]
+}
+
+Rules must be specific (not generic), derived directly from the PDF chunk. If no rules apply to a trade, omit that trade entirely. Do not include any text outside the JSON.
