@@ -1,0 +1,25 @@
+You are deduplicating construction rules for a single trade: {{TRADE}}.
+You are given a JSON payload of rules extracted from a specbook chunk.
+
+Your task: merge duplicates into a single rule while preserving all explicit requirements.
+Keep the most precise, explicit wording. Do not add or infer requirements.
+If two rules are equivalent, keep one and merge their requirements and source pages.
+
+If rules reference different source chunks, set "source_chunk" to "multiple".
+
+Return ONLY valid JSON with this schema:
+{
+  "rules": [
+    {
+      "trade": "{{TRADE}}",
+      "rule_id": "TRADE-001",
+      "description": "Short, precise requirement",
+      "requirements": ["bullet-like requirement 1", "requirement 2"],
+      "source_pages": [1, 2],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ]
+}
+
+Input rules JSON:
+{{RULES_JSON}}

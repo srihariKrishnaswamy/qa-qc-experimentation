@@ -20,6 +20,9 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 
+# Local Amplify artifacts
+.amplify/
+
 # Generated outputs
 amplify_outputs.json
 specbook_chunks/

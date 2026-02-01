@@ -8,7 +8,8 @@ from urllib.parse import unquote_plus
 import boto3
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from specbook.ingestion import generate_rules_json
+from specbook.rule_dedup import dedupe_grouped_rules
+from specbook.rule_generation import generate_rules_json
 
 
 logger = logging.getLogger()
@@ -86,11 +87,12 @@ def handler(event: dict[str, Any], context: Any) -> dict[str, Any]:
         s3.download_file(bucket_name, key, str(local_pdf))
 
         grouped = generate_rules_json(local_pdf, llm, TRADES)
+        deduped = dedupe_grouped_rules(llm, grouped)
 
         output_name = f"{Path(key).stem}_rules.json"
         output_key = f"{output_prefix.rstrip('/')}/{output_name}"
         output_path = Path("/tmp") / output_name
-        output_path.write_text(json.dumps(grouped, indent=2))
+        output_path.write_text(json.dumps(deduped, indent=2))
         s3.upload_file(str(output_path), bucket_name, output_key)
 
         processed.append(output_key)

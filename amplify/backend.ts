@@ -15,7 +15,8 @@ const googleApiKey = secret("GOOGLE_API_KEY");
 
 bucket.addEventNotification(
   s3.EventType.OBJECT_CREATED,
-  new s3n.LambdaDestination(processorLambda)
+  new s3n.LambdaDestination(processorLambda),
+  { prefix: "uploads/" }
 );
 
 backend.specbookProcessor.addEnvironment(

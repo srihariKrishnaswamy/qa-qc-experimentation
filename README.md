@@ -63,6 +63,56 @@ The Lambda writes grouped rules as JSON:
 
 Soon to come: analysis of generated rule exhaustiveness
 
+## LLM Roadmap and Checklist
+
+This plan maps directly to the current Gemini-based pipeline in
+`amplify/functions/specbookProcessor/handler.py` and
+`amplify/functions/specbookProcessor/specbook/ingestion.py`, and is ordered to
+deliver fast wins while keeping model changes safe and measurable.
+
+### Phase 0: Baseline + Instrumentation
+- Define success metrics: extraction accuracy, latency, cost per PDF, and parse rate.
+- Log inputs/outputs with model name, prompt version, and chunk metadata.
+- Create a 20-50 item golden set of specbook chunks with expected rules.
+
+### Phase 1: Improve Prompting
+- Consolidate the rules prompt into a versioned template.
+- Add explicit constraints on JSON schema and trade vocabulary.
+- Add few-shot examples only where they improve golden set scores.
+
+### Phase 2: Dedup LLM Layer
+- Add input normalization + cache key strategy (prompt version + chunk hash).
+- Choose dedup policy: exact match and optional semantic similarity.
+- Track cache hit rate and latency savings.
+
+### Phase 3: Model Cycling + Router
+- Introduce a model router interface with adapter-based providers.
+- Add A/B evaluation using the golden set for Gemini, Claude, Grok, and others.
+- Implement fallback to a stable model on errors or invalid JSON.
+
+### Phase 4: Add Specific Providers
+- Grok: adapter + eval pass.
+- Claude: adapter + eval pass.
+- Gemini variants: flash/pro as available + eval pass.
+
+### Phase 5: Consolidate
+- Choose default model per task based on scorecard.
+- Document routing rules and re-evaluation cadence.
+
+### Execution Checklist
+- [ ] Capture baseline metrics + define golden set.
+- [ ] Inventory current prompts and unify into a versioned template.
+- [ ] Add structured logging for model, prompt version, and chunk id.
+- [ ] Implement dedup cache and measure hit rate.
+- [ ] Build model router with adapters (Gemini, Claude, Grok, others).
+- [ ] Run A/B evals and publish scorecard.
+- [ ] Lock default routing rules and document decision.
+
+### Baseline Notes (fill in)
+- Golden set location: TBD
+- Metrics to track: accuracy, latency, cost per PDF, parse success rate
+- Current model: `gemini-flash-latest`
+
 ## Configuration
 
 The function reads environment variables:
