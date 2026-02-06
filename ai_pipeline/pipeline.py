@@ -1,4 +1,4 @@
-"""CLI: PDF → images → Gemini → print rules JSON."""
+"""CLI: PDF → images → Gemini → rules JSON (stdout + output folder)."""
 
 import argparse
 import json
@@ -12,6 +12,10 @@ from google import genai
 from google.genai import types
 
 from processor import pdf_to_images
+
+# Output folder under ai_pipeline; validation.py can run against files here
+OUTPUT_DIR = Path(__file__).resolve().parent / "output"
+DEFAULT_OUTPUT_FILENAME = "rules.json"
 
 # -----------------------------------------------------------------------------
 # PROMPT: This is where you tell Gemini what to extract and how the rules
@@ -45,6 +49,7 @@ def main() -> None:
 
     parser = argparse.ArgumentParser(description="Extract construction rules from a spec PDF.")
     parser.add_argument("--path", required=True, help="Path to the spec PDF")
+    parser.add_argument("--out", default=None, help=f"Output filename under {OUTPUT_DIR.name}/ (default: {DEFAULT_OUTPUT_FILENAME})")
     args = parser.parse_args()
     pdf_path = Path(args.path)
 
@@ -67,20 +72,37 @@ def main() -> None:
 
     text = (response.text or "").strip()
 
-    # If response looks like JSON, parse and pretty-print; otherwise print raw
+    # If response looks like JSON, parse and pretty-print; otherwise use raw text
+    out_content: str
+    out_ext = ".json"
     if text.startswith("{") or text.startswith("["):
         start = text.find("{") if "{" in text else text.find("[")
         end = text.rfind("}") + 1 if "}" in text else text.rfind("]") + 1
         if end > start:
             try:
                 parsed = json.loads(text[start:end])
-                print(json.dumps(parsed, indent=2))
+                out_content = json.dumps(parsed, indent=2)
             except json.JSONDecodeError:
-                print(text)
+                out_content = text
+                out_ext = ".txt"
         else:
-            print(text)
+            out_content = text
+            out_ext = ".txt"
     else:
-        print(text)
+        out_content = text
+        out_ext = ".txt"
+
+    # Write to output folder (for validation.py and reuse)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_name = args.out or DEFAULT_OUTPUT_FILENAME
+    if not out_name.endswith(".json") and not out_name.endswith(".txt"):
+        out_name = out_name.rstrip(".") + out_ext
+    out_path = OUTPUT_DIR / out_name
+    out_path.write_text(out_content, encoding="utf-8")
+    print(f"Wrote rules to {out_path}", file=sys.stderr)
+
+    # Also print to stdout for piping
+    print(out_content)
 
     # Clean up temp dir (parent of first image path)
     if image_paths:
