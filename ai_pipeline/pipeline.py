@@ -113,6 +113,56 @@ def extract_rules_from_pdf(
     return {"raw": text}
 
 
+VERIFY_PROMPT_TEMPLATE = """You are a construction QA inspector. Look at this single photo of a construction installation.
+
+Rule to verify: {rule_text}
+
+Answer with exactly two lines:
+Line 1: YES or NO (does this photo show compliance with the rule?)
+Line 2: One short reason (e.g. "Nails at 8\" spacing visible" or "Cannot confirm dimension from photo").
+"""
+
+
+def verify_rule_with_image(
+    image_bytes: bytes,
+    mime_type: str,
+    rule: dict,
+    *,
+    api_key: str | None = None,
+    model: str | None = None,
+) -> dict:
+    """
+    Use Gemini vision to check if the image shows compliance with the rule.
+    rule: dict with keys rule, dimension (optional), shall_statement (optional).
+    Returns {"verified": bool, "message": str}.
+    """
+    load_dotenv()
+    key = api_key or os.environ.get("GEMINI_API_KEY")
+    if not key:
+        raise ValueError("GEMINI_API_KEY not set.")
+    model_name = model or os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+    parts = [
+        (rule.get("rule") or "").strip(),
+        (f"Dimension: {rule.get('dimension')}" if rule.get("dimension") else ""),
+        (f"Shall: {rule.get('shall_statement')}" if rule.get("shall_statement") else ""),
+    ]
+    rule_text = " | ".join(p for p in parts if p)
+    if not rule_text:
+        rule_text = "No rule text provided."
+    prompt = VERIFY_PROMPT_TEMPLATE.format(rule_text=rule_text)
+    prompt_part = types.Part.from_text(text=prompt)
+    image_part = types.Part.from_bytes(data=image_bytes, mime_type=mime_type)
+    client = genai.Client(api_key=key)
+    response = client.models.generate_content(
+        model=model_name,
+        contents=[prompt_part, image_part],
+    )
+    text = (response.text or "").strip().upper()
+    verified = "YES" in text.split("\n")[0].upper()
+    message = response.text.strip() if response.text else ""
+    return {"verified": verified, "message": message}
+
+
 def main() -> None:
     load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY")

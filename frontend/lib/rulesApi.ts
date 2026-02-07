@@ -43,3 +43,45 @@ export async function processSpecPdf(file: File): Promise<ProcessSpecPdfResult> 
   const data = (await response.json()) as ProcessSpecPdfResult
   return data
 }
+
+export type RuleForVerify = {
+  rule?: string | null
+  dimension?: string | null
+  shall_statement?: string | null
+  source_page?: string | null
+}
+
+export type VerifyRuleResult = {
+  verified: boolean
+  message: string
+}
+
+/**
+ * Send an image and rule to the backend for compliance verification (Gemini vision).
+ * POST /api/verify with multipart: file (image), rule (JSON string).
+ */
+export async function verifyRule(imageFile: File, rule: RuleForVerify): Promise<VerifyRuleResult> {
+  const formData = new FormData()
+  formData.append('file', imageFile)
+  formData.append('rule', JSON.stringify(rule))
+
+  const response = await fetch(`${RULES_API_URL}/api/verify`, {
+    method: 'POST',
+    body: formData,
+  })
+
+  if (!response.ok) {
+    const text = await response.text()
+    let detail = text
+    try {
+      const j = JSON.parse(text) as { detail?: string }
+      detail = j.detail ?? text
+    } catch {
+      // use text as-is
+    }
+    throw new Error(detail || `Verification failed: ${response.status}`)
+  }
+
+  const data = (await response.json()) as VerifyRuleResult
+  return data
+}

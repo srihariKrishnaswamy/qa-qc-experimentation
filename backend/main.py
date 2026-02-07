@@ -3,6 +3,7 @@ FastAPI backend: POST /api/rules/extract accepts a PDF file and returns
 the Rule Library (JSON) using ai_pipeline + Gemini.
 """
 
+import json
 import logging
 import sys
 import tempfile
@@ -12,7 +13,7 @@ from pathlib import Path
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
 # Run from repo root so ai_pipeline is importable (or set PYTHONPATH to repo root)
@@ -26,7 +27,7 @@ from dotenv import load_dotenv
 load_dotenv(_REPO_ROOT / "ai_pipeline" / ".env")
 load_dotenv(_REPO_ROOT / ".env")
 
-from ai_pipeline.pipeline import extract_rules_from_pdf
+from ai_pipeline.pipeline import extract_rules_from_pdf, verify_rule_with_image
 
 app = FastAPI(title="Rules API", description="Extract quality rules from spec PDFs via Gemini")
 
@@ -88,3 +89,30 @@ async def rules_extract(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail=str(e))
     finally:
         tmp_path.unlink(missing_ok=True)
+
+
+@app.post("/api/verify")
+async def verify_rule(
+    file: UploadFile = File(...),
+    rule: str = Form(..., description="JSON object with keys: rule, dimension (optional), shall_statement (optional)"),
+):
+    """Accept an image and a rule (JSON), run Gemini vision to verify compliance. Returns { verified: bool, message: str }."""
+    if not file.content_type or "image" not in file.content_type.lower():
+        raise HTTPException(status_code=400, detail="File must be an image")
+    contents = await file.read()
+    if not contents:
+        raise HTTPException(status_code=400, detail="Empty file")
+    try:
+        rule_obj = json.loads(rule)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid rule JSON: {e}")
+    if not isinstance(rule_obj, dict):
+        raise HTTPException(status_code=400, detail="rule must be a JSON object")
+    mime = file.content_type or "image/jpeg"
+    logger.info("verify: start image_size=%d rule=%s", len(contents), rule_obj.get("rule", "")[:50])
+    try:
+        result = verify_rule_with_image(contents, mime, rule_obj)
+        logger.info("verify: done verified=%s", result.get("verified"))
+        return result
+    except ValueError as e:
+        raise HTTPException(status_code=500, detail=str(e))
