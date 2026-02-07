@@ -1,0 +1,677 @@
+{
+  "steel": [
+    {
+      "rule_id": "S-001",
+      "description": "Set the frame plumb, level & square.",
+      "requirements": [
+        "Set the frame plumb, level & square; complete frame installation."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-002",
+      "description": "Verify frame opening number matches location number.",
+      "requirements": [
+        "Locate the frame at the door opening location. Verify that the frame opening number matches the actual opening location number."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-003",
+      "description": "Compare frame details to drawing.",
+      "requirements": [
+        "Compare the handing and size of the frame to the drawing."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-004",
+      "description": "Verify proper hardware reinforcements.",
+      "requirements": [
+        "Verify that the proper hardware reinforcements are installed on the frame.",
+        "Verify the hinge size, strike type and closer mounting."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-005",
+      "description": "Anchor usage requirement based on wall components.",
+      "requirements": [
+        "A standard 5-3/4\" steel stud anchor will be used when your wall system consists of a 3-5/8\" steel stud using 5/8\" drywall on each side."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-006",
+      "description": "Adjust frames to match floor finish thickness.",
+      "requirements": [
+        "Adjust the frames to match the floor finish thickness.",
+        "Most frames are provided with adjustable base anchors that allow you to adapt for floor surfaces up to 1-3/8\u201d."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-007",
+      "description": "KD frame assembly requirement.",
+      "requirements": [
+        "The most important tab connection is at the rabbeted part of the frame.",
+        "Those tabs should be bent in an outward position."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-008",
+      "description": "Install base anchors.",
+      "requirements": [
+        "Install base anchors to the frame using the screws provided."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-009",
+      "description": "Removal of temporary shipping bar.",
+      "requirements": [
+        "The temporary shipping bar must be properly removed by grinding it off.",
+        "Do not bend or twist it off."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-010",
+      "description": "Restriction on use of temporary shipping bar.",
+      "requirements": [
+        "This temporary bar should not to be used as a spreader bar to set the frame."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-011",
+      "description": "Stud placement prior to frame installation.",
+      "requirements": [
+        "The steel studs should be in place, leaving out the studs around the rough opening."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-012",
+      "description": "Spreader placement at floor.",
+      "requirements": [
+        "Place the properly sized spreader between the hinge and strike jambs at the floor."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-013",
+      "description": "Spreader cutting requirement.",
+      "requirements": [
+        "Check the spreader to ensure that it has been cut squarely and accurately."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-014",
+      "description": "Base anchor installation method.",
+      "requirements": [
+        "Anchor the base anchors to the floor on each jamb using a concrete screw or drive pin anchor."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-015",
+      "description": "Minimum anchor count and placement.",
+      "requirements": [
+        "Install a minimum of six anchors.",
+        "Place three on the hinge jamb and three on the strike jamb."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-016",
+      "description": "Specific anchor spacing requirement.",
+      "requirements": [
+        "An anchor must be above each hinge and directly across at the same height on the strike jamb."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-017",
+      "description": "Mid-frame spreader installation.",
+      "requirements": [
+        "Place another mid-frame spreader in between the hinge and strike jambs to keep the frame straight and aligned."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-018",
+      "description": "Verify and adjust frame level.",
+      "requirements": [
+        "Check the head of the frame for level accuracy.",
+        "If necessary, adjust the base anchors to achieve a level head and proper floor clearance."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-019",
+      "description": "Securing studs to bottom track.",
+      "requirements": [
+        "Move the studding in place and begin screwing the studs to the track at the bottom.",
+        "Install screws on each side of the stud."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-020",
+      "description": "Securing studs to top plate.",
+      "requirements": [
+        "Once the base of the stud is anchored, proceed with securing the studs against each jamb to the top steel stud plate.",
+        "Install screws on both sides of the stud."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-021",
+      "description": "Install header and perpendicularity requirement.",
+      "requirements": [
+        "Install the header above the frame.",
+        "The studs should be perpendicular to the steel stud track."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-022",
+      "description": "Jamb dimension requirement.",
+      "requirements": [
+        "The dimension between the jambs should be the same at the top and bottom of the frame."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-023",
+      "description": "Final dimensional check (Step 2).",
+      "requirements": [
+        "Check the frame again for plumb, level and square accuracy."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-024",
+      "description": "Securing top steel stud anchor.",
+      "requirements": [
+        "Secure the top steel stud anchor on the strike jamb with screws."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-025",
+      "description": "Final plumb check.",
+      "requirements": [
+        "Check the hinge and strike jambs for plumb accuracy in all directions."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-026",
+      "description": "Positioning top hinge jamb.",
+      "requirements": [
+        "Position the top of the hinge jamb to the stud so that it will accept the proper thickness drywall on each side."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-027",
+      "description": "Bending anchor ear.",
+      "requirements": [
+        "Bend the anchor ear around the stud to hold the anchor in place."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-028",
+      "description": "Attaching anchor.",
+      "requirements": [
+        "Attach the anchor to the stud with the screws provided."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-029",
+      "description": "Securing remaining anchors.",
+      "requirements": [
+        "Screw the remainder of the frame anchors into the studs after verifying the dimension and trueness of the frame.",
+        "Secure each anchor with a minimum of two screws."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "S-030",
+      "description": "Final check after securing frame.",
+      "requirements": [
+        "After the frame is secured to the studs and tightly anchored, check it again for trueness and accuracy in all directions."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-001",
+      "description": "Position hinge jamb relative to drywall thickness.",
+      "requirements": [
+        "Position the top of the hinge jamb to the stud so that it will accept the proper thickness drywall on each side."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-002",
+      "description": "Anchor ear manipulation.",
+      "requirements": [
+        "Bend the anchor ear around the stud to hold the anchor in place."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-003",
+      "description": "Initial anchoring and plumb verification.",
+      "requirements": [
+        "Attach the anchor to the stud with the screws provided.",
+        "Check the frame for plumb."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-004",
+      "description": "Securing remaining anchors.",
+      "requirements": [
+        "Verify the dimension and trueness of the frame, then screw the remainder of the frame anchors into the studs.",
+        "Secure each anchor with a minimum of two screws."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-005",
+      "description": "Wood stud anchor requirement.",
+      "requirements": [
+        "When using wood stud anchors, bend the ears tightly against the stud."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-006",
+      "description": "Post-securing verification.",
+      "requirements": [
+        "After the frame is secured to the studs and tightly anchored, check it again for trueness and accuracy in all directions."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "STEEL-007",
+      "description": "Final frame securing after drywall placement.",
+      "requirements": [
+        "Once the drywall is in place, re-plumb the frame and then anchor off the drywall."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ],
+  "drywall": [
+    {
+      "rule_id": "D-001",
+      "description": "Frame positioning relative to drywall thickness.",
+      "requirements": [
+        "Make sure that the frame is positioned to allow for the thickness of the drywall."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "D-002",
+      "description": "Drywall installer check before hanging.",
+      "requirements": [
+        "The drywall installer should check that the frame is plumb, level and square before hanging the drywall."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "D-003",
+      "description": "Drywall installation technique restriction.",
+      "requirements": [
+        "The installer should avoid excessive shoving of the drywall into the hinge, strike or head jambs because this may throw the frame out of alignment."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "D-004",
+      "description": "Chamfering drywall edge.",
+      "requirements": [
+        "During the drywall installation, chamfer back the edge of the drywall so that it will slip over studding screw heads that may be present around the frame."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "D-005",
+      "description": "Drywall handling during installation.",
+      "requirements": [
+        "As you install the drywall, gently work it in and around the frame, trying to avoid knocking the frame out of alignment."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "D-006",
+      "description": "Re-plumbing and anchoring after drywall is in place.",
+      "requirements": [
+        "Once the drywall is in place, re-plumb the frame and then anchor off the drywall."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "DRYWALL-001",
+      "description": "Pre-hanging frame check and installation technique.",
+      "requirements": [
+        "Check that the frame is plumb, level and square before hanging the drywall.",
+        "Avoid excessive shoving of the drywall into the hinge, strike or head jambs because this may throw the frame out of alignment."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "DRYWALL-002",
+      "description": "Drywall edge preparation.",
+      "requirements": [
+        "Chamfer back the edge of the drywall so that it will slip over studding screw heads that may be present around the frame."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "DRYWALL-003",
+      "description": "Drywall handling during installation.",
+      "requirements": [
+        "Gently work the drywall in and around the frame, trying to avoid knocking the frame out of alignment."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "DRYWALL-004",
+      "description": "Final trueness check before securing drywall.",
+      "requirements": [
+        "Check the frame again for trueness before screwing the drywall off to the perimeter studs around the frame."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ],
+  "electrician": [
+    {
+      "rule_id": "E-001",
+      "description": "Install electrical components during Step 2.",
+      "requirements": [
+        "If your installation requires electrical components, install conduits or flex cable for low voltage wiring now."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "E-002",
+      "description": "Verify electrical wiring needs during Step 3.",
+      "requirements": [
+        "If the opening requires it, verify electrical wiring needs."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "ELECTRICIAN-001",
+      "description": "Verify wiring needs based on opening requirements.",
+      "requirements": [
+        "If the opening requires it, verify electrical wiring needs."
+      ],
+      "source_pages": [
+        1
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ],
+  "carpenter": [
+    {
+      "rule_id": "C-001",
+      "description": "Bending ears on wood stud anchors.",
+      "requirements": [
+        "When using wood stud anchors, bend the ears tightly against the stud."
+      ],
+      "source_pages": [
+        5
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ],
+  "tiler": [
+    {
+      "rule_id": "T-001",
+      "description": "Maximum thickness note for certain tile finishes.",
+      "requirements": [
+        "Some wood and tile finishes, such as quarry, are up to 3/4\" thick."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ],
+  "unspecified": [
+    {
+      "rule_id": "U-001",
+      "description": "Material and tool selection requirement.",
+      "requirements": [
+        "Select the right materials and tools for this project."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "U-002",
+      "description": "Functionality test requirement.",
+      "requirements": [
+        "Test the door to ensure that it is functioning properly."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "U-003",
+      "description": "Hardware schedule check and action.",
+      "requirements": [
+        "Check the hardware schedule.",
+        "Contract your distributor if information does not match."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "U-004",
+      "description": "Verification of floor specifications if frame is set early.",
+      "requirements": [
+        "If you are installing the door frame before the floor is installed, it is critical to know the specifications of the floor that will be laid."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "U-005",
+      "description": "Verification of floor anchor requirements.",
+      "requirements": [
+        "We recommend that you contact your job supervisor in advance to verify the floor anchor requirements of the finish flooring."
+      ],
+      "source_pages": [
+        3
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "U-006",
+      "description": "Guidance reference for anchor placement.",
+      "requirements": [
+        "For additional guidance on anchor placement, consult the industry standards published by SDI."
+      ],
+      "source_pages": [
+        4
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    },
+    {
+      "rule_id": "UNSPECIFIED-001",
+      "description": "Requirement for spreaders during drywall hanging.",
+      "requirements": [
+        "Spreaders should be left in place during hanging of drywall to help prevent the frame from being knocked out of plumb."
+      ],
+      "source_pages": [
+        2
+      ],
+      "source_chunk": "specbook_chunk_1.pdf"
+    }
+  ]
+}

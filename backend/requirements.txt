@@ -1,0 +1,8 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.9
+python-dotenv>=1.0.0
+# ai_pipeline deps so backend can import pipeline (Gemini + PDF)
+google-genai>=1.61.0
+pdf2image>=1.17.0
+pillow>=12.0.0

@@ -1,0 +1,542 @@
+[
+  {
+    "rule": "No asbestos in construction materials",
+    "dimension": null,
+    "source_page": "2303",
+    "shall_statement": "There shall be no asbestos-containing material used in the construction of this project any form whatsoever."
+  },
+  {
+    "rule": "Construction must meet IBC",
+    "dimension": null,
+    "source_page": "2303",
+    "shall_statement": "All construction must meet all seismic requirements of the 2021 International Building Code - Latest approved version."
+  },
+  {
+    "rule": "Performance Bond requirement",
+    "dimension": "5%",
+    "source_page": "00 72 13 - 1",
+    "shall_statement": "Each Contractor shall be required to furnish a 5% bid bond."
+  },
+  {
+    "rule": "Labor and Material Payment Bond requirement",
+    "dimension": "100%",
+    "source_page": "00 72 13 - 1",
+    "shall_statement": "Each Contractor shall be required to furnish a Performance Bond in the sum of 100% of the Contract amount and a Labor and Materials Payment Bond in like amount (100%) of the contract amount."
+  },
+  {
+    "rule": "Insurance Certificate",
+    "dimension": null,
+    "source_page": "00 72 13 - 2",
+    "shall_statement": "The Owner shall obtain a Certificate of Compliance and shall transmit same through the Architect to be furnished to the General Contractor."
+  },
+  {
+    "rule": "Insurance claim submittal",
+    "dimension": "21 days",
+    "source_page": "00 72 13 - 2",
+    "shall_statement": "The General Contractor must submit any claims against this Policy in writing to the Owner, through the Architect, within twenty-one (21) days after occurrence in order that damage be assessed before job conditions are disturbed."
+  },
+  {
+    "rule": "Subcontractor Insurance",
+    "dimension": null,
+    "source_page": "00 72 13 - 2",
+    "shall_statement": "The general and each subcontractor shall carry insurance on all stored materials for theft to the value requested on stored materials stored at the job site to the protection of the general contractor and the Owner."
+  },
+  {
+    "rule": "Written material approval required",
+    "dimension": "10 days",
+    "source_page": "00 73 00-1",
+    "shall_statement": "WRITTEN APPROVAL TEN (10) DAYS BEFORE BID SHALL BE SECURED FROM THE ARCHITECT BEFORE SUBSTITUTION IS MADE."
+  },
+  {
+    "rule": "Temporary wiring requirements",
+    "dimension": null,
+    "source_page": "00 73 00-2",
+    "shall_statement": "All temporary wiring and lighting shall be completely removed when permanent wiring is installed and the permanent lighting system shall be used to complete the construction. All wiring must meet the requirements of OSHA and the NEC and be metered separately."
+  },
+  {
+    "rule": "Construction sign requirements",
+    "dimension": "4' x 8'",
+    "source_page": "00 73 00-2",
+    "shall_statement": "Said sign shall be approximately 4' x 8' made of wood with a neat border, with wording as directed and as per approved sketch (furnished by the Architect)."
+  },
+  {
+    "rule": "Temporary office size",
+    "dimension": "8' x 10'",
+    "source_page": "00 73 00-2",
+    "shall_statement": "The contractor shall provide an 8' x 10' minimum space with sufficient heating, lighting, air conditioning, and telephone line."
+  },
+  {
+    "rule": "Safety precautions",
+    "dimension": "6'-0\"",
+    "source_page": "00 73 00-3",
+    "shall_statement": "A 6'-0\" construction fence shall be placed around all storage areas, construction areas, and hazardous areas.  It shall be the contractor's responsibility to maintain a SAFE construction atmosphere at all times and meet all OSHA requirements."
+  },
+  {
+    "rule": "Addenda",
+    "dimension": null,
+    "source_page": "00 73 00-3",
+    "shall_statement": "Any addenda issued prior to the time of bidding shall be covered in the bid and shall become a part thereof and shall be binding as to final executed documents."
+  },
+  {
+    "rule": "Alternate Bid",
+    "dimension": null,
+    "source_page": "00 73 00-3",
+    "shall_statement": "If an alternate price called for does not involve a change in price, the Bidder shall so indicate by writing the words 'No Change' in the space provided."
+  },
+  {
+    "rule": "As-built drawings submittal",
+    "dimension": null,
+    "source_page": "00 73 00-4",
+    "shall_statement": "The General Contractor and all prime subcontractors shall, at the completion of the project and prior to final payment, furnish to the Architect a red-line set of prints with all changes to reflect as built drawings."
+  },
+  {
+    "rule": "Fire and Smoke Barrier",
+    "dimension": "15'-0\"",
+    "source_page": "00 73 00-5",
+    "shall_statement": "The General Contractor shall stencil in red above the ceiling at all fire wall locations the following notation: 'Fire and Smoke Barrier, Protect all Openings' with the appropriate hour rating notation and a solid red line between stencils.  Stencil shall be located every 15'-0\" on center."
+  },
+  {
+    "rule": "General Contingency Allowance",
+    "dimension": "$30,000.00",
+    "source_page": "01 21 00 - 1",
+    "shall_statement": "General Contingency to be used by owner as necessary."
+  },
+  {
+    "rule": "Requestor Removal Allowance",
+    "dimension": "$35,000.00",
+    "source_page": "01 21 00 - 1",
+    "shall_statement": "Requestor Removal Allowance."
+  },
+  {
+    "rule": "Provide a cost for the alternate",
+    "dimension": null,
+    "source_page": "01 23 00-1",
+    "shall_statement": "Contractor shall provide a cost for labor and material for all work associated with prepping and preparing the exposed roof deck..."
+  },
+  {
+    "rule": "Submittals for Substitution",
+    "dimension": "60 days",
+    "source_page": "01 25 13 - 2",
+    "shall_statement": "Requests for substitution will be considered if received within 60 days after commencement of the Work."
+  },
+  {
+    "rule": "Copies of Substitution Submittal",
+    "dimension": "3 copies",
+    "source_page": "01 25 13 - 2",
+    "shall_statement": "Submit 3 copies of each request for substitution for consideration."
+  },
+  {
+    "rule": "Architect's Action for Substitutions",
+    "dimension": "1 week, 2 weeks",
+    "source_page": "01 25 13 - 2",
+    "shall_statement": "Within one week of receipt of the request for substitution, the Architect will request additional information or documentation necessary for evaluation of the request. Within 2 weeks of receipt of the request, or one week of receipt of the additional information or documentation, which ever is later, the Architect will notify the Contractor of acceptance or rejection of the proposed substitution."
+  },
+  {
+    "rule": "No extra work",
+    "dimension": null,
+    "source_page": "01 26 00 - 1",
+    "shall_statement": "NO EXTRA WORK SHALL BE PERFORMED WITHOUT FIRST RECEIVING WRITTEN APPROVAL FROM THE ARCHITECT."
+  },
+  {
+    "rule": "Contractor action in response to proposed change order",
+    "dimension": null,
+    "source_page": "01 26 00 - 3",
+    "shall_statement": "Make written reply to the Architect in response to each Proposed Change Order request or Construction Change Directive. State proposed change in the Contract Sum, if any. State proposed change in the Contract Time of completion, if any. Clearly describe other changes in the Work required by the proposed change or desirable therewith, if any. Include full backup data such as, subcontractor's letter of proposal or similar information. Submit this response in a single copy."
+  },
+  {
+    "rule": "Contractor action when disagreeing with the stipulated change.",
+    "dimension": null,
+    "source_page": "01 26 00 - 3",
+    "shall_statement": "The Contractor promptly shall return three copies of the Change Order, unsigned by him, to the Architect with a letter signed by the Contractor's disagreement."
+  },
+  {
+    "rule": "Payment Application",
+    "dimension": null,
+    "source_page": "01 29 00 - 2",
+    "shall_statement": "Make formal submittal of request for payment by filling in all appropriate information, by typewriter or neat lettering in ink, on AIA Document G702, 'Application and Certificate for Payment', plus Continuation Sheets, AIA Document G703, using data from the Schedule of Values and the accompanying cost loaded schedule, if applicable."
+  },
+  {
+    "rule": "Submittal documents for payment",
+    "dimension": null,
+    "source_page": "01 29 00 - 2",
+    "shall_statement": "Submit the original of the Application and Certificate for Payment, plus two (2) identical copies of the entire Application including all continuation sheet re-sheets, to the Architect. All copies shall bear original signatures and original notarizations."
+  },
+  {
+    "rule": "Review of submittal",
+    "dimension": null,
+    "source_page": "01 29 00 - 2",
+    "shall_statement": "The Architect will review the formal submittal and, upon approval and agreement, will retain one copy for the Architect's files and transmit two copies to the Owner."
+  },
+  {
+    "rule": "Material location reports",
+    "dimension": null,
+    "source_page": "01 32 00 - 1",
+    "shall_statement": "Submitted Daily to architect & Owner, in a format as defined by Owner."
+  },
+  {
+    "rule": "Field condition reports",
+    "dimension": null,
+    "source_page": "01 32 00 - 1",
+    "shall_statement": "Submitted to Architect & Owner, in a format as defined by architect & Owner (including electronic formats such as Primavera Expedition)."
+  },
+  {
+    "rule": "Special reports",
+    "dimension": null,
+    "source_page": "01 32 00 - 1",
+    "shall_statement": "Submitted per occurrence to Architect and Owner's Representative in a format as defined by architect & Owner (including electronic formats such as Primavera Expedition)."
+  },
+  {
+    "rule": "Photographer qualifications",
+    "dimension": null,
+    "source_page": "01 32 00 - 1",
+    "shall_statement": "Digital photos of high quality taken by the General Contractor are acceptable."
+  },
+  {
+    "rule": "Daily construction reports",
+    "dimension": null,
+    "source_page": "01 32 00 - 3",
+    "shall_statement": "Prepare a daily construction report recording the following information concerning events at Project site: List of subcontractors at the site. Approximate count of personnel at Project site. High and low temperatures and general weather conditions. Accidents and unusual events. Meetings and significant decisions. Stoppages, delays, shortages, losses. Meter readings and similar recordings. Emergency procedures. Orders and requests of governing authorities. Change Orders received, implemented. Services connected, disconnected. Equipment or system tests and start-ups. Partial Completions and occupancies. Substantial Completions authorized."
+  },
+  {
+    "rule": "Field condition reports required",
+    "dimension": null,
+    "source_page": "01 32 00 - 3",
+    "shall_statement": "Submit with a request for information on Primavera Expedition. Include a detailed description of the differing conditions, together with recommendations for changing the Contract Documents."
+  },
+  {
+    "rule": "Special reports submittal",
+    "dimension": "1 day",
+    "source_page": "01 32 00 - 4",
+    "shall_statement": "Submit special reports directly to architect & Owner, within one day of an occurrence."
+  },
+  {
+    "rule": "Contractor schedule",
+    "dimension": "30 days",
+    "source_page": "01 33 00 - 3",
+    "shall_statement": "Prepare a fully developed, horizontal bar-chart type Contractor's construction schedule. Submit within 30 days of the date established for 'Commencement of the Work'."
+  },
+  {
+    "rule": "Shop Drawing Size",
+    "dimension": "8-1/2\" x 11\" to 36\" x 48\"",
+    "source_page": "01 33 00 - 5",
+    "shall_statement": "Except for templates, patterns and similar full- size Drawings, submit Shop Drawings on sheets at least 8-1/2\" x 11\" but no larger than 36\" x 48\"."
+  },
+  {
+    "rule": "Shop Drawings",
+    "dimension": "2 prints retained",
+    "source_page": "01 33 00 - 5",
+    "shall_statement": "Submit one correctable translucent reproducible print and one blue- or black-line print for the Architect's review; the reproducible print will be returned."
+  },
+  {
+    "rule": "Maintenance Requirements",
+    "dimension": "2 prints retained",
+    "source_page": "01 33 00 - 5",
+    "shall_statement": "Submit 2 blue- or black-line prints for the Architect's review; one will be returned."
+  },
+  {
+    "rule": "Final Submittal (Shop Drawings)",
+    "dimension": "2 prints retained",
+    "source_page": "01 33 00 - 5",
+    "shall_statement": "Submit 3 blue- or black-line prints; submit 5 prints where required for maintenance manuals. 2 prints will be retained; the remainder will be returned."
+  },
+  {
+    "rule": "Additional Maintenance Requirements",
+    "dimension": "2 prints retained",
+    "source_page": "01 33 00 - 5",
+    "shall_statement": "Submit 3 blue- or black-line prints and 2 additional prints where required for maintenance manuals; plus the number of prints needed by the Architect for distribution. 2 prints will be retained; the remainder returned."
+  },
+  {
+    "rule": "Product Data",
+    "dimension": null,
+    "source_page": "01 33 00 - 6",
+    "shall_statement": "Where Product Data is applicable for use, submit as 'Shop Drawings'."
+  },
+  {
+    "rule": "Sample sizes",
+    "dimension": null,
+    "source_page": "01 33 00 - 7",
+    "shall_statement": "Submit full-size, fully fabricated Samples cured and finished as specified and physically identical with the material or product proposed."
+  },
+  {
+    "rule": "Warranties",
+    "dimension": "15 days",
+    "source_page": "01 78 30 - 2",
+    "shall_statement": "When work is completed or occupied by the Owner, submit properly executed warranties to the Architect within fifteen days of completion of that designated portion of the Work."
+  },
+  {
+    "rule": "Demolition: 48 hours notice",
+    "dimension": "48 hours",
+    "source_page": "02 41 19 - 2",
+    "shall_statement": "Provide minimum of 48 hours advance notice to Owner of demolition activities that will affect Owner's normal operations."
+  },
+  {
+    "rule": "Fire-retardant plywood",
+    "dimension": "1/2-inch",
+    "source_page": "02 41 19 - 3",
+    "shall_statement": "Provide 1/2-inch fire-retardant plywood on demolition side."
+  },
+  {
+    "rule": "Demolish foundation walls",
+    "dimension": "12 inches",
+    "source_page": "02 41 19 - 3",
+    "shall_statement": "Demolish foundation walls to a depth of not less than 12 inches below existing ground surface."
+  },
+  {
+    "rule": "Waterproofing vapor barrier",
+    "dimension": "6 mil",
+    "source_page": "07 10 00 - 1",
+    "shall_statement": "Vapor Barrier: 6 MIL MOISTOP with joints taped."
+  },
+  {
+    "rule": "ply wood",
+    "dimension": "4 ply",
+    "source_page": "07 10 00 - 1",
+    "shall_statement": "Apply 6 mil MOISTOP 4 ply vapor barrier over surface of stone aggregate ASTM #5 compacted subgrade before placing 2\" of coarse sand. "
+  },
+  {
+    "rule": "Lap joints",
+    "dimension": "2\"",
+    "source_page": "07 10 00 - 1",
+    "shall_statement": "Lap joints not less than 6\"."
+  },
+  {
+    "rule": "Steel doors and frames",
+    "dimension": "6 copies",
+    "source_page": "08 11 00 - 1",
+    "shall_statement": "The Contractor shall submit six (6) copies of Checked shop drawings for approval by the Architect."
+  },
+  {
+    "rule": "Hollow metal doors",
+    "dimension": "16 gauge",
+    "source_page": "08 11 00 - 1",
+    "shall_statement": "Doors shall be made of 16 gauge roller leveled prime quality cold rolled steel sheets."
+  },
+  {
+    "rule": "Steel stiffeners",
+    "dimension": "16 gauge, 5\" centers",
+    "source_page": "08 11 00 - 1",
+    "shall_statement": "Vertical stiffeners shall be No. 16 gauge channel shaped steel on nominal 6\" spaces, welded to both face sheets on 5\" centers."
+  },
+  {
+    "rule": "Edge channels",
+    "dimension": "14 gauge",
+    "source_page": "08 11 00 - 1",
+    "shall_statement": "Top and bottom channels shall be No. 14 gauge."
+  },
+  {
+    "rule": "Frames",
+    "dimension": "30\" wide",
+    "source_page": "08 11 00 - 1",
+    "shall_statement": "Frames for units 30\" wide and less shall be fabricated from 15 ga. material, frames for units over 30\" wide shall be fabricated from 14 ga. material."
+  },
+  {
+    "rule": "Electrical conduit",
+    "dimension": "3/4\"",
+    "source_page": "08 11 00 - 2",
+    "shall_statement": "At certain doors, one door schedule, manufacturer shall install at factory in frame a backer to provide space for 3/4\" electrical conduit for card reader security."
+  },
+  {
+    "rule": "All hollow metal frame center mullions",
+    "dimension": "12\" butt frames",
+    "source_page": "08 11 00 - 2",
+    "shall_statement": "Hollow metal frames for 16\" thick masonry walls where they occur may be 12\" butt frames at the gymnasium only."
+  },
+  {
+    "rule": "door shall have a face sheet of .040",
+    "dimension": ".040",
+    "source_page": "08 11 00 - 2",
+    "shall_statement": "Doors shall have a face sheet of .040 microfilm Aluminum of good sound quality."
+  },
+  {
+    "rule": "Aluminum door frame",
+    "dimension": ".4 mil",
+    "source_page": "08 11 00 - 2",
+    "shall_statement": "Door finish shall be clear anodized with a minimum coating of .4 mils."
+  },
+  {
+    "rule": "Wood doors solid stave core",
+    "dimension": "1-3/4\"",
+    "source_page": "08 14 00 - 1",
+    "shall_statement": "Doors shall be 1-3/4\" solid stave lumber core doors with plain sliced stain grada red oak faces as manufactured by Algoma, VT Industries, Mohawk, or approved equal."
+  },
+  {
+    "rule": "Concrete slab",
+    "dimension": "1/4\"",
+    "source_page": "09 64 66 - 1",
+    "shall_statement": "The general contractor shall provide a concrete slab smooth troweled and level to a tolerance of 1/8\" in a 10'0\" radius, subject to the approval of the wood flooring contractor."
+  },
+  {
+    "rule": "Floor storage",
+    "dimension": "7 days",
+    "source_page": "09 64 66 - 1",
+    "shall_statement": "Flooring shall be stored on the premises a minimum of seven (7) days before installation commences."
+  },
+  {
+    "rule": "action hard maple flooring",
+    "dimension": "25/32\" x 2-1/4\"",
+    "source_page": "09 64 66 - 2",
+    "shall_statement": "Flooring shall be ACTION FLOOR Systems ANCHOR FLEX Floor System. Maple. 25/32\" thick 2-1/4\" wide Action Hard Maple Flooring."
+  },
+  {
+    "rule": "sheathing plywood",
+    "dimension": "23/32\" x 2' x 8\"",
+    "source_page": "09 64 66 - 2",
+    "shall_statement": "Panels shall be 23/32\" x 2' x 8\" APA-rated sheathing plywood, exposure 1. Minimum APA Spacing rating of 48/24."
+  },
+  {
+    "rule": "foam pad",
+    "dimension": "5/8\" foam cushion pads",
+    "source_page": "09 64 66 - 2",
+    "shall_statement": "Install first layer of 25/32\" x 2' x 6\" sheathing grade plywood with 5/8\" foam cushion pads attached."
+  },
+  {
+    "rule": "Expansion voids",
+    "dimension": "6\"",
+    "source_page": "09 64 66 - 2",
+    "shall_statement": "Provide expansion void with more than 6\" from edge of sheet to center of cushions. Install plywood per manufacturer recommendation."
+  },
+  {
+    "rule": "Floor strip spacing",
+    "dimension": "12\" o.c.",
+    "source_page": "09 64 66 - 2",
+    "shall_statement": "Install finish flooring parallel with main playing court by power nailing approximately 12\" o.c."
+  },
+  {
+    "rule": "paint material examination",
+    "dimension": "65 and 85 degrees F",
+    "source_page": "09 91 00 - 6",
+    "shall_statement": "All materials at the site at least 24 hours before using in order to bring their temperature between 65 and 85 degrees F."
+  },
+  {
+    "rule": "interior temperatures",
+    "dimension": "45 and 90 degrees F",
+    "source_page": "09 91 00 - 6",
+    "shall_statement": "Paint exterior and interior surfaces when the ambient temperature is between 45 and 90 degrees F."
+  },
+  {
+    "rule": "Application: Thinning temperatures",
+    "dimension": "50 and 90 degrees F",
+    "source_page": "09 91 00 - 6",
+    "shall_statement": "Unless otherwise designated in the manufacturer's printed instructions. Maintain these temperatures until the paint dries hard."
+  },
+  {
+    "rule": "Recoat primed areas, first coat",
+    "dimension": null,
+    "source_page": "09 91 00 - 7",
+    "shall_statement": "Recoat primed areas, sealing surfaces where evidence of suction spots or unsealed areas in first coat appears, to ensure a finish coat with not burn-through or other defects due to insufficient sealing."
+  },
+  {
+    "rule": "Application",
+    "dimension": null,
+    "source_page": "09 91 00 - 7",
+    "shall_statement": "After the prime coat has been applied, nail holes shall be filled with putty colored to match the finish. Putty shall be brought flush with the surface of the woodwork. Flamed (Opaque) Finishes."
+  },
+  {
+    "rule": "Reducer Ramp slope",
+    "dimension": "8.33%",
+    "source_page": "10 74 49 - 1",
+    "shall_statement": "All ramps and reducers shall exceed 8.33% maximum slope requirement."
+  },
+  {
+    "rule": "Reducer ramp temp",
+    "dimension": "35 degrees F (3 degrees C)",
+    "source_page": "10 74 49 - 2",
+    "shall_statement": "Surface must be dry and clean and free from dirt, oil, frost and all other foreign materials and have a minimum surface temperature of 35 degrees F (3 degrees C)"
+  },
+  {
+    "rule": "Ramp thickness",
+    "dimension": "3/16\"",
+    "source_page": "10 74 49 - 3",
+    "shall_statement": "Ramps shall have a 3/16\" (6.35mm) front radius maintaining a slope of less than 1:12 to the Ramp."
+  },
+  {
+    "rule": "Slip-resistant pads",
+    "dimension": "2\"",
+    "source_page": "10 74 49 - 3",
+    "shall_statement": "Ramp surfaces for models in 1150 through 2395 series shall have molded slip resistant traction pads 2\" (50.8mm) by 3 3/8\" (85.725mm) with 1/8\" (3.175mm) depressed channel."
+  },
+  {
+    "rule": "Volleyball sleeves",
+    "dimension": "3-1/2\"",
+    "source_page": "11 66 00 - 1",
+    "shall_statement": "Provide two (2) volleyball inserts, 00870-200, 3-1/2\" diameter floor sleeve by Porter Athletic Equipment. Sleeves shall be installed flush with gym floors as recommended by manufacturer. Sleeves shall come with brass covers."
+  },
+  {
+    "rule": "bleachers height",
+    "dimension": "10'-1/4\"",
+    "source_page": "12 66 13 - 2",
+    "shall_statement": "Provide 2 banks of wall-attached 12 rows high."
+  },
+  {
+    "rule": "Row to Row",
+    "dimension": "22\"-24\"",
+    "source_page": "12 66 13 - 2",
+    "shall_statement": "Row to row spacing 22\", 24\" (See plans)."
+  },
+  {
+    "rule": "wide chair space",
+    "dimension": "36\"",
+    "source_page": "12 66 13 - 2",
+    "shall_statement": "Provide a 36\" wide wheel chair space as shown on the plans and as required to meet local code jurisdiction compliance with ADA. (One row deep)."
+  },
+  {
+    "rule": "handicap protection",
+    "dimension": "36\"",
+    "source_page": "12 66 13 - 3",
+    "shall_statement": "Provide manufacturers standard permanent handicap notchout (36\" wide) located as shown on architectural plans."
+  },
+  {
+    "rule": "Steel members",
+    "dimension": "4\" sphere",
+    "source_page": "12 66 13 - 3",
+    "shall_statement": "Rails are to be designed to comply with all applicable codes and remain consistent with all other rails not allow clearance of a 4\" sphere."
+  },
+  {
+    "rule": "polyester powder",
+    "dimension": "42\" high",
+    "source_page": "12 66 13 - 3",
+    "shall_statement": "Provide steel self-storing 42\" high self-storing end guard rails with tubular supports and vertical intermediate members to comply with all code requirements. Rails shall be fitted to each exposed bank end from third row and above with all steel to steel connections. Finish shall be a polyester powder coat."
+  },
+  {
+    "rule": "standard polydeck finish",
+    "dimension": "8' high",
+    "source_page": "12 66 13 - 4",
+    "shall_statement": "Provide the manufacturers standard polydeck finish to match deck board surface. Back panels will be provided a maximum of 8' high."
+  },
+  {
+    "rule": "Welded stop dimensions",
+    "dimension": "2\"-3\" minimum",
+    "source_page": "12 66 13 - 4",
+    "shall_statement": "electrically welded closed rectangular steel tube. 2\"-3\" minimum size, 14 gauge steel fitted with a rear welded gusset at the wheel channel."
+  },
+  {
+    "rule": "Structural steel",
+    "dimension": "60\" on center",
+    "source_page": "12 66 13 - 4",
+    "shall_statement": "Shall be of structural steel, 11 gauge spaced not greater than 60\" on center for maximum stress safeness."
+  },
+  {
+    "rule": "Deck surfaces",
+    "dimension": ".030 thick",
+    "source_page": "12 66 13 - 4",
+    "shall_statement": "Exposed wear surfaces shall be finished with a layer of High Density Polyethylene plastic 325, .030 thick, Light Gray in color, complimentary to the seat option. Deck finishes, such as clear coat, requiring more than simple touch up to restore it to a new appearance after wear occurs are unacceptable."
+  },
+  {
+    "rule": "Nose Beam",
+    "dimension": "13-gauge",
+    "source_page": "12 66 13 - 4",
+    "shall_statement": "Shall be one-piece 13-gauge galvanized steel. 14-gauge roll formed steel is utilized for the necessary structural integrity to accommodate section lengths up to 26'"
+  },
+  {
+    "rule": "Rear Riser",
+    "dimension": "14-gauge",
+    "source_page": "12 66 13 - 4",
+    "shall_statement": "Shall be one piece formed 14-gauge, grade 50, galvanized steel, with a continuous access joint to fully encapsulate footrest panel for ease of cleaning and additional structural support. 14-gauge roll formed steel is utilized for the necessary structural integrity to accommodate section lengths up to 26'."
+  },
+  {
+    "rule": "Seating",
+    "dimension": "18-inch wide",
+    "source_page": "12 66 13 - 5",
+    "shall_statement": "18-inch wide one-piece individual seating modules shall be constructed of high-density polyethylene. Provide in 10\" deep."
+  }
+]

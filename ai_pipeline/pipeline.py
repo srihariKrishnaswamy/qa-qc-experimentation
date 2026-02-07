@@ -2,16 +2,23 @@
 
 import argparse
 import json
+import logging
 import os
 import shutil
 import sys
+import time
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-from processor import pdf_to_images
+try:
+    from .processor import pdf_to_images
+except ImportError:
+    from processor import pdf_to_images
 
 # Output folder under ai_pipeline; validation.py can run against files here
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
@@ -39,6 +46,73 @@ EXTRACTION_PROMPT = (
 # DELAY_BETWEEN_BATCHES = 2
 
 
+def extract_rules_from_pdf(
+    pdf_path: Path,
+    *,
+    api_key: str | None = None,
+    model: str | None = None,
+) -> list[dict] | dict:
+    """
+    Extract rules from a spec PDF using Gemini. Used by CLI and by the FastAPI backend.
+    Returns parsed JSON (list of rule objects or dict). Raises on missing API key or runtime errors.
+    """
+    load_dotenv()
+    key = api_key or os.environ.get("GEMINI_API_KEY")
+    if not key:
+        raise ValueError("GEMINI_API_KEY not set. Add it to .env or pass api_key=.")
+    model_name = model or os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+    path = Path(pdf_path)
+    if not path.exists():
+        raise FileNotFoundError(f"PDF not found: {path}")
+
+    t0 = time.monotonic()
+    logger.info("Converting PDF to images...")
+    image_paths = pdf_to_images(path)
+    logger.info("Got %d page(s) in %.1fs. Sending to Gemini (%s)...", len(image_paths), time.monotonic() - t0, model_name)
+    t1 = time.monotonic()
+
+    try:
+        prompt_part = types.Part.from_text(text=EXTRACTION_PROMPT)
+        image_parts = [
+            types.Part.from_bytes(data=p.read_bytes(), mime_type="image/jpeg")
+            for p in image_paths
+        ]
+        contents = [prompt_part, *image_parts]
+        client = genai.Client(api_key=key)
+        response = client.models.generate_content(
+            model=model_name,
+            contents=contents,
+        )
+        text = (response.text or "").strip()
+        logger.info("Gemini responded in %.1fs", time.monotonic() - t1)
+    finally:
+        if image_paths:
+            tmp_dir = image_paths[0].parent
+            if "ai_pipeline_pages_" in str(tmp_dir):
+                try:
+                    shutil.rmtree(tmp_dir, ignore_errors=True)
+                except OSError:
+                    pass
+
+    # Strip markdown code fence if present (e.g. ```json\n[...]\n```)
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        after_open = stripped.split("\n", 1)[1] if "\n" in stripped else ""
+        if after_open.rstrip().endswith("```"):
+            after_open = after_open.rsplit("```", 1)[0].rstrip()
+        stripped = after_open
+
+    if stripped.startswith("{") or stripped.startswith("["):
+        start = stripped.find("{") if "{" in stripped else stripped.find("[")
+        end = stripped.rfind("}") + 1 if "}" in stripped else stripped.rfind("]") + 1
+        if end > start:
+            try:
+                return json.loads(stripped[start:end])
+            except json.JSONDecodeError:
+                pass
+    return {"raw": text}
+
+
 def main() -> None:
     load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -54,43 +128,9 @@ def main() -> None:
     pdf_path = Path(args.path)
 
     print("Converting PDF to images...", file=sys.stderr)
-    image_paths = pdf_to_images(pdf_path)
-    print(f"Got {len(image_paths)} page(s). Sending all to Gemini in one request.", file=sys.stderr)
-
-    prompt_part = types.Part.from_text(text=EXTRACTION_PROMPT)
-    image_parts = [
-        types.Part.from_bytes(data=p.read_bytes(), mime_type="image/jpeg")
-        for p in image_paths
-    ]
-    contents = [prompt_part, *image_parts]
-
-    client = genai.Client(api_key=api_key)
-    response = client.models.generate_content(
-        model=model,
-        contents=contents,
-    )
-
-    text = (response.text or "").strip()
-
-    # If response looks like JSON, parse and pretty-print; otherwise use raw text
-    out_content: str
+    rules = extract_rules_from_pdf(pdf_path, api_key=api_key, model=model)
+    out_content = json.dumps(rules, indent=2)
     out_ext = ".json"
-    if text.startswith("{") or text.startswith("["):
-        start = text.find("{") if "{" in text else text.find("[")
-        end = text.rfind("}") + 1 if "}" in text else text.rfind("]") + 1
-        if end > start:
-            try:
-                parsed = json.loads(text[start:end])
-                out_content = json.dumps(parsed, indent=2)
-            except json.JSONDecodeError:
-                out_content = text
-                out_ext = ".txt"
-        else:
-            out_content = text
-            out_ext = ".txt"
-    else:
-        out_content = text
-        out_ext = ".txt"
 
     # Write to output folder (for validation.py and reuse)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -101,17 +141,7 @@ def main() -> None:
     out_path.write_text(out_content, encoding="utf-8")
     print(f"Wrote rules to {out_path}", file=sys.stderr)
 
-    # Also print to stdout for piping
     print(out_content)
-
-    # Clean up temp dir (parent of first image path)
-    if image_paths:
-        tmp_dir = image_paths[0].parent
-        if "ai_pipeline_pages_" in str(tmp_dir):
-            try:
-                shutil.rmtree(tmp_dir, ignore_errors=True)
-            except OSError:
-                pass
 
 
 if __name__ == "__main__":
