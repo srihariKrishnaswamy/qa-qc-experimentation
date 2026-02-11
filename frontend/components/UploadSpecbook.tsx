@@ -11,11 +11,6 @@ type UploadFile = {
   status: 'uploading' | 'complete' | 'error'
 }
 
-const RULES_API_URL = process.env.NEXT_PUBLIC_RULES_API_URL
-const INGEST_API_URL =
-  process.env.NEXT_PUBLIC_INGEST_API_URL ??
-  'https://pkru6dhsqi.execute-api.us-west-2.amazonaws.com/prod'
-
 function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
@@ -27,7 +22,6 @@ export default function UploadSpecbook() {
   const [selectedFile, setSelectedFile] = useState<UploadFile | null>(null)
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [isDragging, setIsDragging] = useState(false)
-  const [usedPipeline, setUsedPipeline] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const uploadIdRef = useRef(0)
   const presignAbortRef = useRef<AbortController | null>(null)
@@ -36,13 +30,11 @@ export default function UploadSpecbook() {
     async (file: File | null) => {
       if (!file) {
         setSelectedFile(null)
-        setUsedPipeline(false)
         return
       }
       if (file.type !== 'application/pdf') return
       const uploadId = ++uploadIdRef.current
       setUploadError(null)
-      setUsedPipeline(!!RULES_API_URL)
       setSelectedFile({
         file,
         progress: 0,
@@ -55,49 +47,17 @@ export default function UploadSpecbook() {
       presignAbortRef.current = controller
 
       try {
-        if (RULES_API_URL) {
-          console.log('[pipeline] request', { name: file.name })
-          const result = await processSpecPdf(file)
-          if (uploadIdRef.current !== uploadId) return
-          try {
-            sessionStorage.setItem(
-              PIPELINE_RULES_STORAGE_KEY,
-              JSON.stringify({ rules: result.rules })
-            )
-          } catch {
-            // ignore storage errors
-          }
-          setSelectedFile((prev) =>
-            prev
-              ? {
-                  ...prev,
-                  progress: 100,
-                  estimatedSecondsLeft: 0,
-                  status: 'complete',
-                }
-              : null
-          )
-          return
-        }
-
-        console.log('[quick-ingestion] request', {
-          name: file.name,
-          contentType: file.type,
-        })
-        const response = await fetch(`${INGEST_API_URL}/quick-ingestion`, {
-          method: 'POST',
-          headers: { 'Content-Type': file.type },
-          body: file,
-          signal: controller.signal,
-        })
-        if (!response.ok) {
-          const errorBody = await response.text()
-          throw new Error(`Quick ingestion failed (${response.status}): ${errorBody}`)
-        }
-        const quickPayload = await response.json()
-        console.log('[quick-ingestion] response', quickPayload)
+        console.log('[pipeline] request', { name: file.name })
+        const result = await processSpecPdf(file, { signal: controller.signal })
         if (uploadIdRef.current !== uploadId) return
-
+        try {
+          sessionStorage.setItem(
+            PIPELINE_RULES_STORAGE_KEY,
+            JSON.stringify({ rules: result.rules })
+          )
+        } catch {
+          // ignore storage errors
+        }
         setSelectedFile((prev) =>
           prev
             ? {
@@ -154,24 +114,19 @@ export default function UploadSpecbook() {
     presignAbortRef.current?.abort()
     setUploadError(null)
     setSelectedFile(null)
-    setUsedPipeline(false)
   }
 
   const handleNext = () => {
     if (!selectedFile || selectedFile.status !== 'complete') return
-    if (usedPipeline) {
-      router.push('/rules')
-    }
+    router.push('/rules')
   }
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 max-w-2xl mx-auto">
       <h1 className="text-xl font-medium text-gray-900 mb-6">Upload Specbook</h1>
-      {RULES_API_URL && (
-        <p className="text-sm text-gray-500 mb-4">
-          Using pipeline backend — PDF is sent to your local API and rules are returned directly (no Amplify/AppSync).
-        </p>
-      )}
+      <p className="text-sm text-gray-500 mb-4">
+        PDF is converted to images in your browser and sent to our API for rule extraction. Deployable on Vercel with a Gemini API key.
+      </p>
 
       {/* Drag & drop zone */}
       <div

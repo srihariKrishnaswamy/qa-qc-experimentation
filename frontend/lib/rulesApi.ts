@@ -1,12 +1,11 @@
 /**
- * Service to call the Rules API (FastAPI backend) for PDF → Rule Library extraction.
- * No Amplify/AppSync — only the backend endpoint.
+ * Rules API: extract (PDF → Rule Library) and verify (image + rule).
+ * Uses same-origin Next.js API routes so the app can be deployed on Vercel only.
  */
 
-const RULES_API_URL =
-  process.env.NEXT_PUBLIC_RULES_API_URL ?? 'http://localhost:8000'
+import { pdfToImages } from './pdfToImages'
 
-/** SessionStorage key for rules returned by the pipeline backend (not listener/AppSync). */
+/** SessionStorage key for rules returned by the pipeline (extract). */
 export const PIPELINE_RULES_STORAGE_KEY = 'pipeline-rules'
 
 export type RuleLibrary = unknown
@@ -16,16 +15,20 @@ export type ProcessSpecPdfResult = {
 }
 
 /**
- * Upload a spec PDF to the pipeline backend and return the extracted Rule Library.
- * POST /api/rules/extract with multipart/form-data.
+ * Convert PDF to images in the browser, then call /api/rules/extract.
+ * Use from client only (e.g. UploadSpecbook).
+ * Pass optional signal to abort (e.g. from AbortController).
  */
-export async function processSpecPdf(file: File): Promise<ProcessSpecPdfResult> {
-  const formData = new FormData()
-  formData.append('file', file)
-
-  const response = await fetch(`${RULES_API_URL}/api/rules/extract`, {
+export async function processSpecPdf(
+  file: File,
+  options?: { signal?: AbortSignal }
+): Promise<ProcessSpecPdfResult> {
+  const images = await pdfToImages(file)
+  const response = await fetch('/api/rules/extract', {
     method: 'POST',
-    body: formData,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ images }),
+    signal: options?.signal,
   })
 
   if (!response.ok) {
@@ -57,15 +60,17 @@ export type VerifyRuleResult = {
 }
 
 /**
- * Send an image and rule to the backend for compliance verification (Gemini vision).
- * POST /api/verify with multipart: file (image), rule (JSON string).
+ * Send an image and rule to /api/verify for compliance verification (Gemini vision).
  */
-export async function verifyRule(imageFile: File, rule: RuleForVerify): Promise<VerifyRuleResult> {
+export async function verifyRule(
+  imageFile: File,
+  rule: RuleForVerify
+): Promise<VerifyRuleResult> {
   const formData = new FormData()
   formData.append('file', imageFile)
   formData.append('rule', JSON.stringify(rule))
 
-  const response = await fetch(`${RULES_API_URL}/api/verify`, {
+  const response = await fetch('/api/verify', {
     method: 'POST',
     body: formData,
   })
